@@ -1,0 +1,16 @@
+body {
+  background: url("https://media.istockphoto.com/id/1040250650/ru/%D1%84%D0%BE%D1%82%D0%BE/%D0%B1%D0%B5%D0%BB%D1%8B%D0%B9-%D1%84%D0%BE%D0%BD-%D1%81%D1%82%D1%83%D0%B4%D0%B8%D0%B8.jpg?s=612x612&w=0&k=20&c=FGYlFkLqFCKgDUm66a9R73J1WyQydq0Yjpyu85bax9o=") 100% 100% / cover no-repeat;
+  min-height: 100vh;
+  padding: 0;
+  font-family: Lucida Sans, Lucida Sans Regular, Lucida Grande, Lucida Sans Unicode, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+}
+
+.container {
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+/*# sourceMappingURL=index.6b0cd12a.css.map */
