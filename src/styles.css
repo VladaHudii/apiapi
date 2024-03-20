@@ -1,7 +1,6 @@
 body {
-    background: url(https://media.istockphoto.com/id/1040250650/ru/%D1%84%D0%BE%D1%82%D0%BE/%D0%B1%D0%B5%D0%BB%D1%8B%D0%B9-%D1%84%D0%BE%D0%BD-%D1%81%D1%82%D1%83%D0%B4%D0%B8%D0%B8.jpg?s=612x612&w=0&k=20&c=FGYlFkLqFCKgDUm66a9R73J1WyQydq0Yjpyu85bax9o=);
-    background-size: cover;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: #d7e3e2;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .container {
@@ -19,17 +18,32 @@ body {
 }
 
 .UserListBox, .UserInfoBox {
-    width: 400px;
-    height: 500px;
     background-color: white;
-    border-radius: 3%;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.UserListBox {
+    border-top-left-radius: 1.5%;
+    border-bottom-left-radius: 1.5%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 370px;
+    height: 550px;
+}
+
+.UserInfoBox {
+    border-top-right-radius: 1.5%;
+    border-bottom-right-radius: 1.5%;
+    width: 470px;
+    height: 550px;
+    position: relative;
 }
 
 .UserListBox h1 {
     font-size: 30px;
     font-weight: 900;
-    text-align: center;
+    text-align: left;
+    margin-left: 30px;
 }
 
 .message-list {
@@ -37,25 +51,30 @@ body {
     flex-direction: column;
     flex: 1;
     list-style-type: none;
-    padding:  12px 12px;
+    padding: 0 12px;
     margin: 0;
 }
+
 .message-list li {
     white-space: pre-wrap;
-    color: #233d74;
-    background: #fff;
-    border-radius: 2px 20px 20px;
-    width: fit-content;
+    color: #949393;
     margin: 0 0 12px;
-    padding: 12px;
-    font-size: 12px;
+    padding: 20px;
+    font-size: 13px;
     display: inline-flex;
     flex-direction: column;
     cursor: pointer;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+} 
+
+.message-list li figcaption .name {
+    color: #3f4145;
+    font-size: 16px;
+    font-weight: 900; 
 }
-.message-list li p {
-    margin: 6px 0;
-}
+
 .message-list li figure {
     padding: 0;
     margin: 0;
@@ -64,26 +83,65 @@ body {
     flex-direction: row;
     align-items: center;
 }
+
 .message-list li figure img {
     width: 50px;
-    max-height: 50px    ;
+    max-height: 50px;
     border-radius: 25px;
 }
-.message-list li figure figcaption {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    padding-left: 12px;
-}
-.status-message {
-    position: sticky;
-    left: 0;
+
+.user-details text {
     width: 100%;
-    top: 3px;
-    padding: 6px;
-    margin: 0;
-    height: 18px;
-    font-size: 12px;        
-    text-align: center;
-    z-index: 2;
 }
+
+.user-details .left-column {
+    width: 50%;
+    float: left;
+    margin-top: -13px;
+}
+
+.user-details figure .value {
+    margin: 0 0 12px;
+    padding: 12px;
+    bottom: 20px;
+    font-size: 12px;
+    display: inline-flex;
+    flex-direction: column;
+    cursor: pointer; 
+}
+
+
+.user-details figure .name {
+    color: #3f4145;
+    font-size: 20px;
+    font-weight: 900;
+    margin-bottom: 4px;
+}
+
+.user-details figure .username {
+    color: #949393;
+    font-size: 15px;
+}
+
+.user-details figure .text {
+    color: #949393;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.user-details img {
+    margin-top: 10px;
+    width: 50px;
+    max-height: 50px;
+    border-radius: 25px;
+    float: left;
+}
+
+.loading {
+   position: absolute;
+   color: #949393;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
+

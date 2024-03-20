@@ -27,7 +27,8 @@ UsersService.prototype.getUserById = async function(id) {
 
 
    UsersService.prototype.renderUsersList = function (list) {
-   const listElement = document.querySelector('#message-list');
+   const listElement = document.querySelector('.message-list');
+   const userDetailsContainer = document.querySelector('.user-details');
 
 
     list.forEach((value) => {
@@ -36,35 +37,57 @@ UsersService.prototype.getUserById = async function(id) {
     const imgUrlParams = new URLSearchParams({ w: 120, h: 120});
     imgUrlParams.append('r', value.id);
 
-    itemElement.textContent = `
+    itemElement.innerHTML = `
     <figure> 
-    <img src="https://api.lorem.space/image/face?${imgUrlParams.toString}" /> 
+    <img src="https://api.lorem.space/image/face?${imgUrlParams.toString()}" /> 
     <figcaption>
-    <span>${value.name}</span>
-    <span>${value.username}</span>
+    <span class="name">${value.name}</span>
+    <span>Company: ${value.company.name}</span>
     </figcaption>
     </figure>
    
     `;
 
-
     itemElement.addEventListener('click', async () => {
-    const detail = await this.getUserById(value.id);
-    const detailItem = document.createElement('p');
-    detailItem.textContent = `
-    Company: ${value.company.name},
-    Phone: ${detail.phone},
-    Email: ${detail.email},
-    Address: ${value.address.street}, ${value.address.suite}, ${value.address.city}, ${value.address.zipcode},
-     `;
 
-    itemElement.append(detailItem);
+    const detailItem = document.createElement('loading');
+    userDetailsContainer.innerHTML = `
+    <span class="loading">Loading...</span>
+    `;
+    userDetailsContainer.append(detailItem);
+
+    const detail = await this.getUserById(value.id);
+    userDetailsContainer.innerHTML = `
+                <figure>
+                <img src="https://api.lorem.space/image/face?${imgUrlParams.toString()}" />
+                <figcaption>
+                <div class="value">
+                <span class="name">${value.name}</span> 
+                <span class="username">Username: ${value.username}</span>
+                </div>
+                
+                <br>
+                <div class="text">
+                <div class="left-column">
+                <p>Company</p>
+                <p>Phone</p>
+                <p>Email</p>
+                <p>Address</p>
+                </div>
+
+                <div class="right-column">
+                <p>${value.company.name}</p>
+                <p>${detail.phone}</p>
+                <p><a href="#">${detail.email}</a></p>
+                <p>${value.address.street}, ${value.address.suite}, ${value.address.city}, ${value.address.zipcode}</p>
+                </div>
+                </div>
+                </figcaption>
+                </figure>
+            `;
     });
 
-
     listElement.appendChild(itemElement);
-
-
     });
 }
 
